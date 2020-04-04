@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Jackal\Downloader\Ext\Instagram\Exception;
-
 
 use Jackal\Downloader\Exception\DownloadException;
 

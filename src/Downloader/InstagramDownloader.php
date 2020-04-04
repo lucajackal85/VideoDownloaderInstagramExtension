@@ -1,14 +1,10 @@
 <?php
 
-
 namespace Jackal\Downloader\Ext\Instagram\Downloader;
 
-
-use GuzzleHttp\Client;
 use Jackal\Downloader\Downloader\AbstractDownloader;
-use Jackal\Downloader\Exception\DownloadException;
-use Jackal\Downloader\Ext\Instagram\Exception\InstaramDownloadException;
-use Symfony\Component\DomCrawler\Crawler;
+use Jackal\Downloader\Ext\Instagram\Client\InstagramClient;
+use Jackal\Downloader\Ext\Instagram\Crawler\InstagramCrawler;
 
 class InstagramDownloader extends AbstractDownloader
 {
@@ -16,20 +12,12 @@ class InstagramDownloader extends AbstractDownloader
 
     public function getURL(): string
     {
-        $client = new Client([
-            'base_uri' => 'https://www.instagram.com/p/',
-        ]);
+        $client = new InstagramClient();
 
-        $response = $client->get($this->getVideoId().'/');
+        $response = $client->getVideoContent($this->getVideoId());
 
-        $crawler = new Crawler($response->getBody()->getContents());
+        $crawler = new InstagramCrawler($response->getBody()->getContents());
 
-        $element = $crawler->filter('meta[property="og:video"]');
-
-        if(!$element->count()){
-            throw InstaramDownloadException::videoURLsNotFound();
-        }
-
-        return $element->first()->attr('content');
+        return $crawler->getInstagramURL();
     }
 }
