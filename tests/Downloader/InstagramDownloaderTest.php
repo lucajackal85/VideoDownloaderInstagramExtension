@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Jackal\Downloader\Ext\Instagram\Tests\Downloader;
-
 
 use Jackal\Downloader\Ext\Instagram\Downloader\InstagramDownloader;
 use PHPUnit\Framework\TestCase;

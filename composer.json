@@ -1,5 +1,5 @@
 {
-  "name": "jackal/video-download-ext-instagram",
+  "name": "jackal/video-downloader-ext-instagram",
   "description": "\"Download Instagram Video\"",
   "type": "library",
   "license": "MIT",
