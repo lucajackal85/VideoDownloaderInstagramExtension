@@ -20,4 +20,14 @@ class InstagramDownloader extends AbstractDownloader
 
         return $crawler->getInstagramURL();
     }
+
+    public static function getPublicUrlRegex(): string
+    {
+        return '/instagram\.com\/(?:tv|p)\/(.*)\//Ui';
+    }
+
+    public static function getType(): string
+    {
+        return 'vimeo';
+    }
 }
