@@ -8,8 +8,6 @@ use Jackal\Downloader\Ext\Instagram\Crawler\InstagramCrawler;
 
 class InstagramDownloader extends AbstractDownloader
 {
-    const VIDEO_TYPE = 'instagram';
-
     public function getURL(): string
     {
         $client = new InstagramClient();
@@ -21,6 +19,11 @@ class InstagramDownloader extends AbstractDownloader
         return $crawler->getInstagramURL();
     }
 
+    public function getFormatsAvailable(): array
+    {
+        return [];
+    }
+
     public static function getPublicUrlRegex(): string
     {
         return '/instagram\.com\/(?:tv|p)\/(.*)\//Ui';
@@ -28,6 +31,6 @@ class InstagramDownloader extends AbstractDownloader
 
     public static function getType(): string
     {
-        return 'vimeo';
+        return 'instagram';
     }
 }
