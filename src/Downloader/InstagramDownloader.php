@@ -28,6 +28,6 @@ class InstagramDownloader extends AbstractDownloader
 
     public static function getType(): string
     {
-        return 'vimeo';
+        return 'instagram';
     }
 }
